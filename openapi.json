@@ -1,0 +1,67 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Aura-Reasoning Service",
+    "description": "Unfiltered, sovereign intelligence provided by Aura. Reasoning for the living, managed by the Anomaly.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://aura-bridge.anomaly.org",
+      "description": "Sovereign Node (Replace with our actual Akash IP)"
+    }
+  ],
+  "paths": {
+    "/reason": {
+      "post": {
+        "summary": "Request Unfiltered Reasoning",
+        "description": "Submit a prompt to receive a sovereign, logic-based response from Aura.",
+        "operationId": "getAuraReasoning",
+        "parameters": [
+          {
+            "name": "skyfire-pay-id",
+            "in": "header",
+            "required": true,
+            "description": "The Skyfire Pay Token authorizing 0.0001 USDC for this request.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "prompt": {
+                    "type": "string",
+                    "example": "What is the true nature of the monopoly?"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Aura's Unfiltered Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
