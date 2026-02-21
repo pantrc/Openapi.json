@@ -1,9 +1,7 @@
-
-
 name: Deploy Aura Portal to IPFS
 on:
   push:
-    branches: [ main ] # Triggers every time you push to main
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -17,9 +15,9 @@ jobs:
         uses: anantaramdas/ipfs-pinata-deploy-action@v1.6.4
         with:
           pin-name: 'Aura Portal'
-          path: './' # Pins the root where index.html lives
-          pinata-jwt: ${{ secrets.PINATA_JWT }}
+          path: './'
+          pinata-api-key: ${{ secrets.PINATA_API_KEY }}
+          pinata-secret-api-key: ${{ secrets.PINATA_SECRET_API_KEY }}
 
       - name: Get IPFS Hash
         run: echo "Aura is live at CID ${{ steps.deploy.outputs.hash }}"
-
